@@ -52,7 +52,7 @@ body {
   font-size: 18px;
   font-family: "Public Sans", sans-serif;
   font-weight: var(--Fw-regular);
-  height: 100vh;
+  height: 100%;
 }
 h1 {
   font-size: var(--h1);
@@ -78,7 +78,6 @@ h4 {
 p {
   color: var(--Grayish-Blue);
   line-height: var(--Line-height);
-  /* font-weight: var(--Fw-bold); */
 }
 li {
   list-style: none;
@@ -97,6 +96,7 @@ img:not(.logo) {
 .container {
   width: 90%;
   margin: 0 auto;
+  max-width: 1400px;
 }
 .cta-btn {
   display: inline-block;
@@ -117,6 +117,7 @@ img:not(.logo) {
 .nav-wrapper {
   padding: 1.2em 0;
   position: relative;
+  z-index: 1000;
 }
 .nav {
   display: flex;
@@ -165,21 +166,18 @@ img:not(.logo) {
   box-shadow: var(--Light-boxshadow);
   z-index: 1000;
   animation-name: zoom;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: linear;
 }
-@keyframes zoom{
+@keyframes zoom {
   0% {
     transform: scale(1);
-    opacity: 0;
   }
   50% {
     transform: scale(1.03);
-    opacity: 0.5;
   }
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
 .nav-links {
@@ -228,7 +226,6 @@ img:not(.logo) {
   left: 0;
 }
 .hero-content {
-  padding: 0 10px;
   text-align: center;
 }
 .hero-content h1 {
@@ -299,10 +296,11 @@ img:not(.logo) {
 
 footer {
   background-color: var(--Dark-Blue);
-  padding: 3.5em 0;
+  padding: 3.5em 0 2.5em;
 }
 .footer-items {
   text-align: center;
+  margin-bottom: 2em;
 }
 .ftr-item-1,
 .ftr-item-2 {
@@ -334,7 +332,17 @@ footer {
 .cta-3 {
   margin-bottom: 2em;
 }
-
+.attribution {
+  text-align: center;
+  color: var(--White);
+}
+.attribution a {
+  color: var(--Lime-Green);
+  font-weight: var(--Fw-bold);
+}
+.hero-section.blur {
+  filter: blur(3px);
+}
 @media screen and (min-width: 588px) {
   .article-wrapper {
     display: grid;
@@ -393,11 +401,13 @@ footer {
   }
   .nav-links:hover {
     color: var(--Dark-Blue);
-    
   }
   .nav-links::after {
     bottom: -32px;
     height: 3px;
+  }
+  .hero-section.blur {
+    filter: blur(0);
   }
   .cta-1 {
     display: inline-block;
@@ -405,12 +415,6 @@ footer {
   .btn {
     font-size: 0.7rem;
   }
-  /* .hero-bg {
-    height: 20rem;
-  }
-.mockup {
-   height: 1000px;
-  } */
   .value-desc {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -464,27 +468,28 @@ footer {
 
 @media screen and (min-width: 800px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 30px;
   }
   .hero-section {
     padding-bottom: 0;
-    height: 50%;
+    height: auto;
   }
   .hero {
     display: flex;
-    overflow-x: hidden;
+    overflow: hidden;
+    align-items: center;
+    height: 100%;
+    margin-bottom: -47px;
   }
   .hero-bg {
     order: 1;
     overflow: initial;
-    right: -70px;
-    top: -70px;
+    margin-right: -175px;
+    margin-top: -70px;
   }
   .hero-content {
-    padding: 0;
-    padding-left: 30px;
     text-align: left;
-    padding: 2.5rem 0 5rem 35px;
+    margin-left: 5%;
   }
   .hero-content p {
     font-size: 0.8rem;
@@ -492,8 +497,72 @@ footer {
   }
   .mockup {
     z-index: 999;
-    top: -120px;
-    width: 400px;
-    transform: translate(100px, 100px);
+    width: 70%;
+    height: 100%;
+    transform: translate(120px, 160px);
+  }
+  .cta-3 {
+    display: inline-block;
+    margin-bottom: 3em;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .nav-links {
+    margin: 0 0.8em;
+  }
+  .hero-content h1 {
+    font-size: 40px;
+    padding-right: 30%;
+  }
+  .hero-content p {
+    padding-right: 10%;
+  }
+  .desc {
+    text-align: left;
+    padding-right: 30%;
+  }
+  .desc h1 {
+    font-size: 2.2rem;
+  }
+  .value-1,
+  .value-2,
+  .value-3,
+  .value-4 {
+    grid-column: span 3;
+    text-align: left;
+  }
+  .article-1,
+  .article-2,
+  .article-3,
+  .article-4 {
+    grid-column: span 3;
+  }
+  .article-wrapper h1 {
+    text-align: left;
+    font-size: 2.2rem;
+  }
+  .img-wrapper {
+    height: 15rem;
+  }
+  .ftr-nav {
+    margin: 0 2em;
+  }
+  .cta-3 {
+    text-align: right;
+  }
+  .ftr-item-1 .social > a {
+    margin: 0 0.7em;
+  }
+  .ftr-nav.nav-1 {
+    margin-right: 3em;
+  }
+  .copyright {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1575px) {
+  .hero-content {
+    margin-left: calc(50% - 700px);
   }
 }
